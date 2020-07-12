@@ -188,11 +188,12 @@ const RenderBody = ({ home, projects, meta }) => (
 export default ({ data }) => {
   //Required check for no data being returned
   const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
+  // Something died inside of me when I did this
   const projects = [
+    data.prismic.allProjects.edges[6],
     data.prismic.allProjects.edges[3],
     data.prismic.allProjects.edges[4],
     data.prismic.allProjects.edges[0],
-    data.prismic.allProjects.edges[6],
   ]
   const meta = data.site.siteMetadata
 

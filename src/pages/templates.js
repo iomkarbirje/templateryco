@@ -18,8 +18,8 @@ const WorkTitle = styled("h1")`
 const Work = ({ projects, meta }) => (
   <>
     <Helmet
-      title={`Work | Prist, Gatsby & Prismic Starter`}
-      titleTemplate={`%s | Work | Prist, Gatsby & Prismic Starter`}
+      title={`Templatery | Figma Presentation Templates`}
+      titleTemplate={`%s | Templatery | Figma Presentation Templates`}
       meta={[
         {
           name: `description`,
@@ -27,7 +27,7 @@ const Work = ({ projects, meta }) => (
         },
         {
           property: `og:title`,
-          content: `Work | Prist, Gatsby & Prismic Starter`,
+          content: `Templatery | Figma Presentation Templates`,
         },
         {
           property: `og:description`,

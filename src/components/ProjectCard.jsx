@@ -139,6 +139,16 @@ const ProjectCardImageContainer = styled("div")`
   img {
     width: 100%;
     box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.04);
+
+    @media (max-width: 1022px) {
+      max-height: 100%;
+      width: auto;
+    }
+
+    @media (max-width: ${dimensions.maxwidthTablet}px) {
+      max-height: none;
+      width: 100%;
+    }
   }
 `
 

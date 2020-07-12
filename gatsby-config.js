@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Templatery | Gatsby & Prismic Starter`,
-    description: `A starter powered by Gatsby and Prismic to showcase portfolios and blogs.`,
-    author: `Marguerite Roth | marguerite.io`,
+    title: `Templatery | Figma Presentation Templates`,
+    description: `A collection of beautiful, free templates for Figma presentations.`,
+    author: `Filip Stollar | filipstollar.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
