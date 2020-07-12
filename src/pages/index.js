@@ -185,16 +185,15 @@ const RenderBody = ({ home, projects, meta }) => (
   </>
 )
 
+const projectShowcaseUrls = ["grady", "poche", "mono", "una"]
+
 export default ({ data }) => {
   //Required check for no data being returned
   const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
   // Something died inside of me when I did this
-  const projects = [
-    data.prismic.allProjects.edges[6],
-    data.prismic.allProjects.edges[3],
-    data.prismic.allProjects.edges[4],
-    data.prismic.allProjects.edges[0],
-  ]
+  const projects = data.prismic.allProjects.edges.filter(project =>
+    projectShowcaseUrls.includes(project.node._meta.uid)
+  )
   const meta = data.site.siteMetadata
 
   if (!doc || !projects) return null

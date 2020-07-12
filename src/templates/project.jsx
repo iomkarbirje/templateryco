@@ -97,10 +97,7 @@ const Project = ({ project, meta }) => {
         <ProjectTitle>{RichText.render(project.project_title)}</ProjectTitle>
         {project.project_hero_image && (
           <ProjectHeroContainer>
-            <img
-              src={project.project_hero_image.url}
-              alt="Project Main Image"
-            />
+            <img src={project.project_hero_image.url} alt="Template preview" />
           </ProjectHeroContainer>
         )}
         <ProjectBody>
@@ -110,6 +107,7 @@ const Project = ({ project, meta }) => {
             width="100%"
             height="450"
             src={project.project_embed.url}
+            title="Figma Template Preview"
           />
           <WorkLink to={"/templates"}>
             <Button className="Button--secondary">See other templates</Button>

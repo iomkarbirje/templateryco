@@ -73,7 +73,7 @@ const Footer = () => (
         <a
           href="https://www.filipstollar.com"
           target="_blank"
-          rel="norefferer noopener"
+          rel="noreferrer noopener"
         >
           Filip Stollar
         </a>
@@ -83,7 +83,7 @@ const Footer = () => (
         <a
           href="https://github.com/margueriteroth/gatsby-prismic-starter-prist"
           target="_blank"
-          rel="norefferer noopener"
+          rel="noreferrer noopener"
         >
           Prist
         </a>
