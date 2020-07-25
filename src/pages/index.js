@@ -15,7 +15,7 @@ const Hero = styled("div")`
   padding-top: 2.5em;
   padding-bottom: 3em;
   margin-bottom: 6em;
-  max-width: 830px;
+  max-width: 1020px;
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     margin-bottom: 3em;
@@ -73,13 +73,21 @@ const Hero = styled("div")`
   }
 `
 
-const Section = styled("div")`
+export const Section = styled("div")`
   margin-bottom: 10em;
   display: flex;
   flex-direction: column;
 
-  @media (max-width: ${dimensions.maxwidthTablet}px) {
-    margin-bottom: 4em;
+  ${props =>
+    props.grid &&
+    `
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0em 2em;  
+  `}
+
+  @media (max-width: ${dimensions.maxwidthDesktop}px) {
+    display: block;
   }
 
   &:last-of-type {
@@ -114,6 +122,16 @@ const WorkAction = styled(Link)`
       opacity: 1;
       transition: transform 150ms ease-in-out;
     }
+  }
+`
+
+const EmptyCard = styled("div")``
+
+const MoreFakeCard = styled("div")`
+  float: right;
+
+  a {
+    float: right;
   }
 `
 
@@ -163,7 +181,7 @@ const RenderBody = ({ home, projects, meta }) => (
         <Button>{RichText.render(home.hero_button_text)}</Button>
       </a>
     </Hero>
-    <Section>
+    <Section grid>
       {projects.map((project, i) => (
         <ProjectCard
           key={i}
@@ -174,9 +192,12 @@ const RenderBody = ({ home, projects, meta }) => (
           uid={project.node._meta.uid}
         />
       ))}
-      <WorkAction to={"/templates"}>
-        More templates <span>&#8594;</span>
-      </WorkAction>
+      <EmptyCard></EmptyCard>
+      <MoreFakeCard>
+        <WorkAction to={"/templates"}>
+          More templates <span>&#8594;</span>
+        </WorkAction>
+      </MoreFakeCard>
     </Section>
     <Section>
       {RichText.render(home.about_title)}

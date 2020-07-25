@@ -7,8 +7,12 @@ import PropTypes from "prop-types"
 
 const AboutContainer = styled("div")`
   display: grid;
-  grid-template-columns: 1fr 8em;
+  grid-template-columns: 2fr 1fr;
   grid-gap: 3em;
+
+  @media (max-width: ${dimensions.maxwidthTablet}px) {
+    grid-template-columns: 3fr 1fr;
+  }
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     grid-template-columns: 1fr;

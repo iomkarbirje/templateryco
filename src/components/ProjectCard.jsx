@@ -8,12 +8,25 @@ import PropTypes from "prop-types"
 
 const ProjectCardContainer = styled(Link)`
   display: grid;
-  grid-template-columns: 4fr 7fr;
+  grid-template-columns: 1fr;
   box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.06);
   margin-bottom: 4em;
   transition: all 150ms ease-in-out;
   text-decoration: none;
   color: currentColor;
+
+  @media (max-width: ${dimensions.maxwidthDesktop}px) {
+    grid-template-columns: 4fr 7fr;
+
+    div {
+      &:nth-child(1) {
+        order: 2;
+      }
+      &:nth-child(2) {
+        order: 1;
+      }
+    }
+  }
 
   @media (max-width: 950px) {
     grid-template-columns: 4.5fr 7fr;
@@ -56,7 +69,7 @@ const ProjectCardContainer = styled(Link)`
 
 const ProjectCardContent = styled("div")`
   background: white;
-  padding: 4em 3em 2.25em 3em;
+  padding: 2.5em 3em;
   position: relative;
 
   &:before {
@@ -94,7 +107,11 @@ const ProjectCardTitle = styled("h3")`
 const ProjectCardBlurb = styled("div")`
   margin-bottom: 0.5em;
   margin-top: 0.5em;
-  margin-bottom: 5em;
+  margin-bottom: 2em;
+
+  @media (max-width: ${dimensions.maxwidthDesktop}px) {
+    margin-bottom: 4em;
+  }
 
   @media (max-width: ${dimensions.maxwidthTablet}px) {
     margin-bottom: 2.5em;
@@ -154,6 +171,9 @@ const ProjectCardImageContainer = styled("div")`
 
 const ProjectCard = ({ category, title, description, thumbnail, uid }) => (
   <ProjectCardContainer to={`/templates/${uid}`}>
+    <ProjectCardImageContainer className="ProjectCardImageContainer">
+      <img src={thumbnail.url} alt={title[0].text} />
+    </ProjectCardImageContainer>
     <ProjectCardContent className="ProjectCardContent">
       <ProjectCardCategory>{category[0].text}</ProjectCardCategory>
       <ProjectCardTitle>{title[0].text}</ProjectCardTitle>
@@ -162,9 +182,6 @@ const ProjectCard = ({ category, title, description, thumbnail, uid }) => (
         Clone template <span>&#8594;</span>
       </ProjectCardAction>
     </ProjectCardContent>
-    <ProjectCardImageContainer className="ProjectCardImageContainer">
-      <img src={thumbnail.url} alt={title[0].text} />
-    </ProjectCardImageContainer>
   </ProjectCardContainer>
 )
 

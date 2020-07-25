@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import styled from "@emotion/styled"
+import { Section } from "./index"
 import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
 
@@ -56,8 +57,8 @@ const Work = ({ projects, meta }) => (
       ].concat(meta)}
     />
     <Layout>
-      <WorkTitle>Templates Gallery</WorkTitle>
-      <>
+      <WorkTitle>Gallery</WorkTitle>
+      <Section grid>
         {projects.map((project, i) => (
           <ProjectCard
             key={i}
@@ -68,7 +69,7 @@ const Work = ({ projects, meta }) => (
             uid={project.node._meta.uid}
           />
         ))}
-      </>
+      </Section>
     </Layout>
   </>
 )

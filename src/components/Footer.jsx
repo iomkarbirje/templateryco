@@ -89,7 +89,7 @@ const Footer = () => (
         </a>
       </FooterSection>
       <FooterSection>
-        The dog came with the template but I love him
+        The dog came with the website template but I love him
       </FooterSection>
       <FooterSpooch className="FooterSpooch" src={spooch} />
     </FooterAuthor>
