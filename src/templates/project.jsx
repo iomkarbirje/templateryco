@@ -102,13 +102,13 @@ const Project = ({ project, meta }) => {
         )}
         <ProjectBody>
           {RichText.render(project.project_description)}
-          <iframe
+          {project.project_embed && project.project_embed.url && <iframe
             style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
             width="100%"
             height="450"
             src={project.project_embed.url}
             title="Figma Template Preview"
-          />
+          />}
           <WorkLink to={"/templates"}>
             <Button className="Button--secondary">See other templates</Button>
           </WorkLink>
