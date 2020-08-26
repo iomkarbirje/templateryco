@@ -14,6 +14,7 @@ const WorkTitle = styled("h1")`
 // const WorkSubtitle = styled("h4")`
 //   margin-top: 1em;
 //   margin-bottom: 2em;
+//   font-weight: 400;
 // `
 
 const Work = ({ projects, meta }) => (
@@ -57,7 +58,7 @@ const Work = ({ projects, meta }) => (
       ].concat(meta)}
     />
     <Layout>
-      <WorkTitle>All Templates</WorkTitle>
+      <WorkTitle>Premium Templates</WorkTitle>
       <Section grid>
         {projects.map((project, i) => (
           <ProjectCard
@@ -77,9 +78,18 @@ const Work = ({ projects, meta }) => (
 export default ({ data }) => {
   const projects = data.prismic.allProjects.edges
   const meta = data.site.siteMetadata
+
   if (!projects) return null
 
-  return <Work projects={projects} meta={meta} />
+  const premiumProjects = projects.filter(
+    project =>
+      project.node.project_category &&
+      project.node.project_category[0].text === "Premium Figma Template"
+  )
+
+  if (!premiumProjects) return null
+
+  return <Work projects={premiumProjects} meta={meta} />
 }
 
 Work.propTypes = {

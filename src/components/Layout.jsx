@@ -40,7 +40,7 @@ const Announcement = styled.div`
   border-radius: 5px;
   text-decoration: none;
   border: 1px solid #fff1bd;
-  background-color: #fffae7;
+  background-color: #fff8dc;
   color: ${colors.grey900};
 
   a {
@@ -51,12 +51,6 @@ const Announcement = styled.div`
       color: ${colors.blue700};
     }
   }
-
-  ${props =>
-    props.primary &&
-    `
-      background-color: #fffae7;
-    `}
 `
 
 const Layout = ({ children }) => (
@@ -70,18 +64,6 @@ const Layout = ({ children }) => (
         rel="noopener noreferrer"
       >
         View launch post ->
-      </a>
-    </Announcement>
-    <Announcement primary>
-      New premium template is live <span role="img">🎉</span> If Templatery has
-      saved you some time, consider buying the <i>Valerie</i> template on
-      Gumroad.
-      <a
-        href="https://gumroad.com/l/templatery-valerie"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Link ->
       </a>
     </Announcement>
     <LayoutContainer className="div">

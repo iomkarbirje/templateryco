@@ -29,6 +29,7 @@ const HeaderLinks = styled("div")`
     font-size: 0.95em;
     height: 100%;
     padding-bottom: 1.25em;
+    margin-left: 2em;
     padding-top: 0.25em;
     display: block;
     position: relative;
@@ -71,6 +72,9 @@ const Header = () => (
       <HeaderLinks>
         <Link activeClassName="Link--is-active" to="/templates">
           Templates
+        </Link>
+        <Link activeClassName="Link--is-active" to="/premium">
+          Premium
         </Link>
         {/* <Link
                     activeClassName="Link--is-active"
