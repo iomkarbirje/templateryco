@@ -1,8 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { RichText } from "prismic-reactjs"
-import { graphql, Link } from "gatsby"
+import { graphql, Link, navigate } from "gatsby"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import dimensions from "styles/dimensions"
@@ -10,6 +10,12 @@ import Button from "components/_ui/Button"
 import About from "components/About"
 import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
+
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&")
+}
 
 const Hero = styled("div")`
   padding-top: 2.5em;
@@ -135,7 +141,56 @@ const MoreFakeCard = styled("div")`
   }
 `
 
-const RenderBody = ({ home, projects, meta }) => (
+const EmailForm = styled("form")`
+  margin-bottom: 30px;
+
+  h3 {
+    margin: 0 0 20px 0;
+
+    span {
+      font-weight: 500;
+      font-size: 1em;
+    }
+  }
+
+  button {
+    margin-left: 20px;
+  }
+
+  @media (max-width: 480px) {
+    input {
+      display: block;
+      width: 100%;
+    }
+
+    button {
+      margin: 10px 0 0 0;
+    }
+  }
+`
+
+const EmailInput = styled("input")`
+  border: 1px solid ${colors.grey300};
+  background-color: white;
+  padding 18px;
+  width: 250px;
+  font-size: 0.9em;
+
+  &:hover {
+    background-color: ${colors.grey100};
+  }
+`
+
+const CenteredContainer = styled("div")`
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 480px) {
+    display: block;
+  }
+`
+
+const RenderBody = ({ home, projects, meta, handleSubmit, setEmail }) => (
   <>
     <Helmet
       title={meta.title}
@@ -200,6 +255,35 @@ const RenderBody = ({ home, projects, meta }) => (
       </MoreFakeCard>
     </Section>
     <Section>
+      <EmailForm
+        name="contact"
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        onSubmit={handleSubmit}
+      >
+        <h3>
+          Subscribe to updates <span>(e.g. new templates)</span>
+        </h3>
+        {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
+        <input type="hidden" name="form-name" value="contact" />
+        <p hidden>
+          <label>
+            Don’t fill this out: <input name="bot-field" />
+          </label>
+        </p>
+        <CenteredContainer>
+          <EmailInput
+            type="email"
+            name="email"
+            placeholder="Your email"
+            onChange={e => setEmail(e.target.value)}
+          />
+          <Button className="Button--secondary" type="submit">
+            Subscribe <span role="img">👋</span>
+          </Button>
+        </CenteredContainer>
+      </EmailForm>
       {RichText.render(home.about_title)}
       <About bio={home.about_bio} socialLinks={home.about_links} />
     </Section>
@@ -216,12 +300,34 @@ export default ({ data }) => {
     projectShowcaseUrls.includes(project.node._meta.uid)
   )
   const meta = data.site.siteMetadata
+  const [email, setEmail] = useState("")
 
   if (!doc || !projects) return null
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    const form = e.target
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": form.getAttribute("name"),
+        email: email,
+      }),
+    })
+      .then(() => navigate("/thanks/"))
+      .catch(error => alert(error))
+  }
+
   return (
     <Layout>
-      <RenderBody home={doc.node} projects={projects} meta={meta} />
+      <RenderBody
+        setEmail={setEmail}
+        handleSubmit={handleSubmit}
+        home={doc.node}
+        projects={projects}
+        meta={meta}
+      />
     </Layout>
   )
 }
