@@ -305,6 +305,9 @@ export default ({ data }) => {
   if (!doc || !projects) return null
 
   const handleSubmit = e => {
+    if (!email) {
+      return
+    }
     e.preventDefault()
     const form = e.target
     fetch("/", {
