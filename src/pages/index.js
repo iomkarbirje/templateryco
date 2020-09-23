@@ -290,7 +290,7 @@ const RenderBody = ({ home, projects, meta, handleSubmit, setEmail }) => (
   </>
 )
 
-const projectShowcaseUrls = ["grady", "poche", "valerie", "una"]
+const projectShowcaseUrls = ["grady", "poche", "bundle-pupa-shapito-valerie", "una"]
 
 export default ({ data }) => {
   //Required check for no data being returned
