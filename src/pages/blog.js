@@ -68,7 +68,7 @@ const Blog = ({ posts, meta }) => (
       ].concat(meta)}
     />
     <Layout>
-      <BlogTitle>Nothing interesting here</BlogTitle>
+      <BlogTitle>Templatery blog</BlogTitle>
       <BlogGrid>
         {posts.map((post, i) => (
           <PostCard

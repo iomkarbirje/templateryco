@@ -25,7 +25,7 @@ const PostHeroAnnotation = styled("div")`
   padding-top: 0.25em;
 
   h6 {
-    text-align: right;
+    text-align: center;
     color: ${colors.grey600};
     font-weight: 400;
     font-size: 0.85rem;
@@ -60,8 +60,16 @@ const PostTitle = styled("div")`
 `
 
 const PostBody = styled("div")`
-  max-width: 550px;
+  max-width: 600px;
   margin: 0 auto;
+
+  li {
+    margin-bottom: 5px;
+  }
+
+  h3 {
+    margin-bottom 0;
+  }
 
   .block-img {
     margin-top: 3.5em;
@@ -70,8 +78,9 @@ const PostBody = styled("div")`
     img {
       width: 100%;
     }
+
   }
-`
+  `
 
 const PostMetas = styled("div")`
   max-width: 550px;

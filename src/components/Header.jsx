@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
+import dimensions from "styles/dimensions"
 import Logo from "components/_ui/Logo"
 
 const HeaderContainer = styled("div")`
@@ -16,10 +17,16 @@ const HeaderContent = styled("div")`
 
 const HeaderLinks = styled("div")`
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(3, auto);
   justify-content: flex-end;
   width: 100%;
   max-width: 200px;
+
+  @media (max-width: ${dimensions.maxwidthMobile}px) {
+    a {
+      font-size: 11px !important;
+    }
+  }
 
   a {
     color: currentColor;
@@ -76,11 +83,9 @@ const Header = () => (
         <Link activeClassName="Link--is-active" to="/premium">
           Premium
         </Link>
-        {/* <Link
-                    activeClassName="Link--is-active"
-                    to="/blog">
-                    Blog
-                </Link> */}
+        <Link activeClassName="Link--is-active" to="/blog">
+          Blog
+        </Link>
       </HeaderLinks>
     </HeaderContent>
   </HeaderContainer>

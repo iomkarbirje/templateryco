@@ -68,17 +68,17 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  // const postsList = result.data.prismic.allPosts.edges
-  // const postTemplate = require.resolve("./src/templates/post.jsx")
-  // postsList.forEach(edge => {
-  //     createPage({
-  //         type: 'Project',
-  //         match: '/blog/:uid',
-  //         path: `/blog/${edge.node._meta.uid}`,
-  //         component: postTemplate,
-  //         context: {
-  //             uid: edge.node._meta.uid,
-  //         },
-  //     })
-  // })
+  const postsList = result.data.prismic.allPosts.edges
+  const postTemplate = require.resolve("./src/templates/post.jsx")
+  postsList.forEach(edge => {
+    createPage({
+      type: "Project",
+      match: "/blog/:uid",
+      path: `/blog/${edge.node._meta.uid}`,
+      component: postTemplate,
+      context: {
+        uid: edge.node._meta.uid,
+      },
+    })
+  })
 }
