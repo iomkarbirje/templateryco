@@ -10,6 +10,7 @@ import Button from "components/_ui/Button"
 import About from "components/About"
 import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
+import thumbnail from "images/thumbnail.png"
 
 function encode(data) {
   return Object.keys(data)
@@ -213,6 +214,10 @@ const RenderBody = ({ home, projects, meta, handleSubmit, setEmail }) => (
           content: `website`,
         },
         {
+          property: `og:image`,
+          content: thumbnail,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
@@ -290,7 +295,12 @@ const RenderBody = ({ home, projects, meta, handleSubmit, setEmail }) => (
   </>
 )
 
-const projectShowcaseUrls = ["grady", "poche", "bundle-pupa-shapito-valerie", "una"]
+const projectShowcaseUrls = [
+  "grady",
+  "poche",
+  "bundle-pupa-shapito-valerie",
+  "una",
+]
 
 export default ({ data }) => {
   //Required check for no data being returned
