@@ -11,11 +11,11 @@ const WorkTitle = styled("h1")`
   margin-bottom: 1em;
 `
 
-// const WorkSubtitle = styled("h4")`
-//   margin-top: 1em;
-//   margin-bottom: 2em;
-//   font-weight: 400;
-// `
+const WorkSubtitle = styled("h4")`
+  margin-top: 1em;
+  margin-bottom: 2em;
+  font-weight: 400;
+`
 
 const Work = ({ projects, meta }) => (
   <>
@@ -59,6 +59,10 @@ const Work = ({ projects, meta }) => (
     />
     <Layout>
       <WorkTitle>Premium Templates</WorkTitle>
+      <WorkSubtitle>
+        Premium templates come with additional slides like "Meet the team",
+        "Timeline" or various layouts for your text.
+      </WorkSubtitle>
       <Section grid>
         {projects.map((project, i) => (
           <ProjectCard
