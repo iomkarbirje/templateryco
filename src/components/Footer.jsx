@@ -69,7 +69,7 @@ const Footer = () => (
     </Link>
     <FooterAuthor>
       <FooterSection>
-        Templatery is made with ❤️ by{" "}
+        Templatery is made by{" "}
         <a
           href="https://www.filipstollar.com"
           target="_blank"
@@ -89,7 +89,7 @@ const Footer = () => (
         </a>
       </FooterSection>
       <FooterSection>
-        The dog came with the website template but I love him
+        The dog came with the website template and I love him
       </FooterSection>
       <FooterSpooch className="FooterSpooch" src={spooch} />
     </FooterAuthor>
