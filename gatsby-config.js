@@ -26,7 +26,7 @@ module.exports = {
     {
       resolve: "gatsby-source-prismic-graphql",
       options: {
-        repositoryName: "templatery", // (REQUIRED, replace with your own)
+        repositoryName: "iomkarbirje", // (REQUIRED, replace with your own)
         linkResolver: () => post => `/${post.uid}`,
       },
     },
